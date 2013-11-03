@@ -1,0 +1,28 @@
+echo "MySQL information";
+echo "Enter username:";
+read username
+echo "Enter password:";
+read -s password
+
+echo "Creating folders...";
+rm -rf logs
+mkdir logs
+echo "- logs"
+rm -rf SQL-Generated
+mkdir SQL-Generated
+echo "- SQL"
+rm -rf tmp
+mkdir tmp
+echo "- tmp"
+echo "Finished folder creation";
+
+echo "Creating database...";
+
+eval "mysql -u$username -p$password jmjrdf < 'scripts/SQL/table_creation.sql'"
+
+echo "Finished database creation";
+
+#$tables
+
+#rm -r tmp
+

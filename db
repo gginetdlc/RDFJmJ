@@ -1,0 +1,24 @@
+echo "MySQL information"
+echo "Enter username:";
+read username
+echo "Enter password:";
+read -s password
+
+echo "Deleting extra files in tmp/"
+
+rm -rf tmp/
+mkdir tmp
+FILES=SQL-Generated/*
+for f in $FILES
+do
+  echo "Starting($(date)) : Processing $f... ";
+  eval "mysql -u$username -p$password 'jmjrdf' < $f";
+  echo "Finished "$(date)
+done
+
+echo "Starting($(date)) : Creating indexes... ";
+eval "mysql -u$username -p$password 'jmjrdf' < scripts/SQL/index_creation.sql"
+rm -rf SQL-Generated/
+mkdir SQL-Generated
+echo "Done! enjoy your new database!"
+echo $(date)

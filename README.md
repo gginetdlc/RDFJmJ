@@ -1,4 +1,12 @@
-RDFJmJ
-======
+#example
+./configure
+make
+./run test-rdf-file.ttl
+./db
 
-Build-up your own relational database for large RDF-datasets
+#example
+./configure
+make
+./run test-rdf-file.ttl
+./db
+
